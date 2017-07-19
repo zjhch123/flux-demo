@@ -10,7 +10,7 @@ export default class ButtonController extends React.Component {
     this.addNewItem = this.addNewItem.bind(this)
     this._onChange = this._onChange.bind(this)
     this.state = {
-      items: ListStore.getAll()
+      items: ListStore.getState()
     }
   }
 
@@ -20,7 +20,7 @@ export default class ButtonController extends React.Component {
 
   _onChange() {
     this.setState({
-      items: ListStore.getAll()
+      items: ListStore.getState()
     })
   }
 
