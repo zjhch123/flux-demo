@@ -12,8 +12,10 @@ class ListStore extends ReduceStore {
   }
   reduce(state, action) {
     switch(action.type) {
-      case ButtonActionTypes.ADD_NEW_ITEM:
-        return state.push(action.text)
+      case ButtonActionTypes.GET_DATA_START:
+        return state.clear().push(action.data)
+      case ButtonActionTypes.GET_DATA_OVER:
+        return state.clear().concat(action.data.items)
       default:
         return state
     }

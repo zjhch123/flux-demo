@@ -1,12 +1,20 @@
 import AppDispatcher from '../Dispatcher/AppDispatcher'
 import ButtonActionTypes from './ButtonActionTypes'
+import $ from 'jquery'
 
 const ButtonActions = {
-  addNewItem: function(text) {
+  getData: function() {
     AppDispatcher.dispatch({
-      type: ButtonActionTypes.ADD_NEW_ITEM,
-      text: text
+      type: ButtonActionTypes.GET_DATA_START,
+      data: '正在获取'
     })
+    $.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')
+     .then(function(data) {
+        AppDispatcher.dispatch({
+          type: ButtonActionTypes.GET_DATA_OVER,
+          data: data
+        })
+     })
   }
 }
 

@@ -15,15 +15,15 @@ class ButtonController extends React.Component {
     }
   }
 
-  addNewItem() {
-    ButtonActions.addNewItem('new item')
+  getData() {
+    ButtonActions.getData()
   }
   
   render() {
     return (
       <Button 
         items={this.state.items} 
-        onClick={this.addNewItem} />
+        onClick={this.getData} />
     )
   }
 }
