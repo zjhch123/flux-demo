@@ -19,18 +19,23 @@ class ViewController extends React.Component {
 
   constructor(props) {
     super(props)
+    this.inputValue = ''
     this.getData = this.getData.bind(this)
+    this.handlerChange = this.handlerChange.bind(this)
   }
 
   getData() {
-    console.log(this.refs.search)
-    ButtonActions.getData(this.refs.search.value || 'javascript')
+    ButtonActions.getData(this.inputValue || 'javascript')
+  }
+
+  handlerChange(value) {
+    this.inputValue = value
   }
   
   render() {
     return (
       <div>
-        <Input ref="search"
+        <Input onChange={this.handlerChange}
           placeholder="search" />
         <Button 
           onClick={this.getData} title="开始查询"/>
