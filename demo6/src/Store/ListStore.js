@@ -8,17 +8,14 @@ class ListStore extends ReduceStore {
     super(AppDispatcher)
   }
   getInitialState() {
-    return Immutable.List()
+    return Immutable.Map()
   }
   reduce(state, action) {
     switch(action.type) {
       case ButtonActionTypes.GET_DATA_START:
-        return state.clear().push({
-          name: action.data,
-          id: -1
-        })
+        return state.set("loading", true)
       case ButtonActionTypes.GET_DATA_OVER:
-        return state.clear().concat(action.data.items)
+        return state.set("loading", false).set("data", action.data.items)
       default:
         return state
     }

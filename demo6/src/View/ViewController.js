@@ -1,4 +1,5 @@
 import React from 'react'
+import Input from './Input'
 import Button from './Button'
 import ItemList from './ItemList'
 import ButtonActions from '../Actions/ButtonActions'
@@ -22,13 +23,14 @@ class ViewController extends React.Component {
   }
 
   getData() {
+    console.log(this.refs.search)
     ButtonActions.getData(this.refs.search.value || 'javascript')
   }
   
   render() {
     return (
       <div>
-        <input type="text" ref="search"
+        <Input ref="search"
           placeholder="search" />
         <Button 
           onClick={this.getData} title="开始查询"/>
